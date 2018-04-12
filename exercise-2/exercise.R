@@ -16,6 +16,7 @@ salaries2017 <- runif(100,40000,50000)
 # salaries (the negative number means that a salary may have decreased!)
 salaries2018 <- salaries2017 + runif(100, -5000,10000)
 
+
 # Create a data frame 'salaries' by combining the 3 vectors you just made
 # Remember to set `stringsAsFactors=FALSE`!
 my_data <- data.frame(answer,salaries2017,salaries2018, stringsAsFactors = FALSE)
@@ -35,31 +36,32 @@ my_data$got_raise <- my_data$change > 0
 ### cell rather than the whole row!)
 
 # What was the 2018 salary of employee 57
-
+my_data[my_data$answer == "Employee 57", "salaries2018"]
 
 # How many employees got a raise?
 
-
+nrow(my_data[my_data$got_raise == TRUE,])
 # What was the dollar value of the highest raise?
+highest_raise<- max(my_data$change)
 
 
 # What was the "name" of the employee who received the highest raise?
-
+my_data[my_data$change == highest_raise, 'answer']
 
 # What was the largest decrease in salaries between the two years?
-
+largest_decrease <- min(my_data$change)
 
 # What was the name of the employee who recieved largest decrease in salary?
-
+my_data[my_data$change == min(my_data$change), 'answer']
 
 # What was the average salary change?
-
+avg <- mean(my_data$change)
 
 # For people who did not get a raise, how much money did they lose on average?
-
+mean(my_data$change[my_data$got_raise == FALSE])
 
 ## Consider: do the above averages match what you expected them to be based on 
 ## how you generated the salaries?
 
 # Write a .csv file of your salary data to your working directory
-
+write.csv(my_data, 'my_data.csv')

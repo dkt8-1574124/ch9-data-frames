@@ -37,6 +37,7 @@ high <- df$category[df$X1960 == max(df$X1960)]
 
 # Define a function `lowest_category` that takes in a year as a parameter, and
 # returns the lowest spending category of that year
+
 lowest_cateory <-  function(year){
   col <- paste0('X', year)
   df$category[df[,col] == min(df[,col])]
