@@ -36,5 +36,8 @@ my_data$organization[my_data$total_amount == ma]
 my_data$organization[my_data$total_amount == mi]
 
 # How many grants were awarded in 2010?
+#nrow(my_data[my_data$start_year == 2010,])
+
 length(my_data$total_amount[my_data$start_year == 2010])
-my_data$total_amount[my_data$start_year == 2010]
+#sum(my_data$start_year == 2010)
+
